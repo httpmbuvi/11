@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin — Brandon Motors</title>
+<meta name="description" content="Brandon Motors admin dashboard.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<header class="header"><div class="container inner">
+<a href="index.html" class="logo"><span class="mark">B</span>Brandon<span class="accent">Motors</span></a>
+<nav class="nav" id="nav">
+<a href="index.html" class="">Home</a>
+<a href="inventory.html" class="">Inventory</a>
+<a href="about.html" class="">About</a>
+<a href="contact.html" class="">Contact</a>
+<a href="admin.html" class="active">Admin</a>
+</nav>
+<a href="inventory.html" class="btn">Browse Cars</a>
+<button class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+</div></header>
+<main>
+<section class="section"><div class="container" style="max-width:960px">
+<p style="color:var(--primary);text-transform:uppercase;letter-spacing:.15em;font-size:.75rem">Admin console</p>
+<h2 style="font-size:2.5rem;margin:.5rem 0 1.5rem">Manage Brandon Motors</h2>
+<p style="color:var(--muted);font-size:1.1rem;line-height:1.7">This dashboard is for internal operations. Review inventory totals, recent enquiries, and welcome insights from across the site.</p>
+<div class="stats" style="margin-top:3rem">
+<div class="stat"><div class="n">6</div><div class="l">Active Listings</div></div>
+<div class="stat"><div class="n">24</div><div class="l">New Leads</div></div>
+<div class="stat"><div class="n">98%</div><div class="l">Response Rate</div></div>
+<div class="stat"><div class="n">1.2K</div><div class="l">Monthly Visitors</div></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:3rem">
+<div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem">
+<h3 style="font-family:'Space Grotesk';margin-bottom:.75rem">Quick actions</h3>
+<ul style="color:var(--muted);line-height:1.8;list-style:disc;padding-left:1.25rem;margin:0">
+<li>Review new customer enquiries.</li>
+<li>Update listings and pricing.</li>
+<li>Track showroom appointments.</li>
+<li>Verify NTSA checks and documents.</li>
+</ul>
+</div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem">
+<h3 style="font-family:'Space Grotesk';margin-bottom:.75rem">Recent activity</h3>
+<p style="color:var(--muted);margin:0">No new requests yet. When connected to a backend, this section can show the latest customer messages, booking alerts, and inventory changes.</p>
+</div>
+</div>
+</div></section>
+<section class="section"><div class="container" style="max-width:960px">
+<p style="color:var(--primary);text-transform:uppercase;letter-spacing:.15em;font-size:.75rem">Inventory management</p>
+<h2 style="font-size:2.5rem;margin:.5rem 0 1.5rem">Edit car listings</h2>
+<p class="sub">Choose a vehicle and update its details. Changes are saved directly to the backend so inventory stays live.</p>
+<div style="display:grid;gap:2rem">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:1rem"><div id="carList" class="admin-list"></div><button class="btn" id="newCarBtn" type="button">Add new car</button></div>
+<form id="carForm" class="form" style="margin-top:1rem">
+<div class="row"><label><span>Car</span><select id="carSelect" onchange="selectCar(this.value)"></select></label><label><span>Featured</span><input type="checkbox" id="featured"></label></div>
+<div class="row"><label class="wide"><span>Model name</span><input id="name" required></label></div>
+<div class="row"><label><span>Brand</span><input id="brand" required></label><label><span>Year</span><input id="year" type="number" min="1900" max="2100" required></label></div>
+<div class="row"><label><span>Price (KES)</span><input id="price" type="number" min="0" required></label><label><span>Mileage (km)</span><input id="mileage" type="number" min="0" required></label></div>
+<div class="row"><label><span>Fuel</span><input id="fuel" required></label><label><span>Transmission</span><input id="transmission" required></label></div>
+<div class="row"><label><span>Engine</span><input id="engine"></label><label><span>Color</span><input id="color"></label></div>
+<div class="row"><label><span>Body type</span><input id="bodyType"></label><label><span>Image file / URL</span><input id="image"></label></div>
+<div class="row"><label><span>Upload photo</span><input id="imageUpload" type="file" accept="image/*"></label><label><span>Upload clip</span><input id="clipUpload" type="file" accept="video/*"></label></div>
+<label class="wide"><span>Description</span><textarea id="description" rows="4"></textarea></label>
+<div id="mediaPreview" class="media-preview" style="display:none">
+<div class="preview-box"><strong>Photo preview</strong><img id="imagePreview" alt="Image preview"></div>
+<div class="preview-box"><strong>Clip preview</strong><video id="clipPreview" controls></video></div>
+</div>
+<button class="btn" type="submit">Save changes</button>
+<p id="saveMessage" class="admin-message"></p>
+</form>
+</div>
+</div></section>
+</main>
+<script src="assets/admin-backend.js"></script>
+</body></html>
